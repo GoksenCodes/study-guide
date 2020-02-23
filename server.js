@@ -2,18 +2,23 @@ const summary = {
   Monday:
   { subject: "Terminal",
     imgUrl: "https://extensions.gnome.org/extension-data/screenshots/screenshot_442_1.png",
-    youtubeUrl: "https://www.youtube.com/watch?v=5XgBd6rjuDQ"
+    youtubeUrl: "https://www.youtube.com/watch?v=5XgBd6rjuDQ", 
+    linkToNextDay: "https://goksen-student-guide.herokuapp.com/tuesday"
     } ,
   Tuesday: 
   {
     subject: "JS Basics" ,
     imgUrl: "https://miro.medium.com/max/2136/1*Q3UFmjW9fHKcF5EKucyN1g.jpeg",
-    youtubeUrl: "https://www.youtube.com/watch?v=U8XF6AFGqlc"
+    youtubeUrl: "https://www.youtube.com/watch?v=U8XF6AFGqlc",
+    linkToNextDay: "https://goksen-student-guide.herokuapp.com/wednesday",
+    linkToPreviousDay: "https://goksen-student-guide.herokuapp.com/monday"
   },
   Wednesday:
   { subject: "Terminal",
     imgUrl: "https://extensions.gnome.org/extension-data/screenshots/screenshot_442_1.png",
-    youtubeUrl: "https://www.youtube.com/watch?v=5XgBd6rjuDQ"
+    youtubeUrl: "https://www.youtube.com/watch?v=5XgBd6rjuDQ",
+    linkToNextDay: "https://goksen-student-guide.herokuapp.com/thursday",
+    linkToPreviousDay: "https://goksen-student-guide.herokuapp.com/tuesday"
 }
 }
 
@@ -32,11 +37,11 @@ function render(){
   const document = 
   `<html>
   <head>
-    <title>Home</title>
+    <title>StudyGuide</title>
   </head>
   <body>
-    <h1>Study Guide/h1>
-    <p>coming soon...</p>
+    <h1>Welcome to Study Guide/h1>
+    <h2>Summary<h2>
   </body>
 </html>`
 
@@ -46,9 +51,9 @@ return document
 
 app.get ('/:day/' ,
 (request,reponse) => {
-  const page = render()
+  const document = render()
 
-  response.send(page)
+  response.send(document)
 })
 
 
