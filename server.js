@@ -1,19 +1,31 @@
 const summary = {
-  Day1:"JS Basics" ,
-  Day2:"JS Basics2" ,
-  Day3:"JS Basics3" ,
-  Day4:"Servers",
-  Day5:"Clients",
+  Monday:
+  { subject: "Terminal",
+    imgUrl: "https://extensions.gnome.org/extension-data/screenshots/screenshot_442_1.png",
+    youtubeUrl: "https://www.youtube.com/watch?v=5XgBd6rjuDQ"
+    } ,
+  Tuesday: 
+  {
+    subject: "JS Basics" ,
+    imgUrl: "https://miro.medium.com/max/2136/1*Q3UFmjW9fHKcF5EKucyN1g.jpeg",
+    youtubeUrl: "https://www.youtube.com/watch?v=U8XF6AFGqlc"
+  },
+  Wednesday:
+  { subject: "Terminal",
+    imgUrl: "https://extensions.gnome.org/extension-data/screenshots/screenshot_442_1.png",
+    youtubeUrl: "https://www.youtube.com/watch?v=5XgBd6rjuDQ"
+}
 }
 
 const express = require('express')
 
 const app = express()
 
-app.get ('/summary/:day',
+app.get ('/summary/:day/',
 (request,response) =>
 {
-  response.send(summary)
+  response.send(request.params.day)
+
 })
 
 function render(){
@@ -32,18 +44,19 @@ return document
 
 }
 
-app.get ('/:day' ,
+app.get ('/:day/' ,
 (request,reponse) => {
   const page = render()
 
   response.send(page)
 })
 
-const port = 3000
+
+const port = process.env.PORT || 3000
+
 
 function onListen () {
   console.log(`Listening on :${port}`)
 }
 
 app.listen(port,onListen)
-
